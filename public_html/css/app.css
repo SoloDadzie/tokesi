@@ -1,0 +1,243 @@
+* {
+      font-family: 'Manrope', sans-serif;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 15px #ff4444, 0 0 30px rgba(255, 68, 68, 0.8), 0 0 45px rgba(255, 68, 68, 0.5);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 25px #ff4444, 0 0 50px rgba(255, 68, 68, 1), 0 0 75px rgba(255, 68, 68, 0.7);
+        transform: scale(1.05);
+      }
+    }
+
+    .cart-badge {
+      animation: pulse 1.5s infinite;
+    }
+
+    .logo a {
+      font-family: 'DM Serif Display', serif;
+    }
+
+    .menu-icon svg {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .menu-icon .menu-svg {
+      position: relative;
+    }
+
+    .menu-icon.active .menu-svg {
+      transform: rotate(90deg);
+      opacity: 0;
+    }
+
+    .menu-icon .close-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: rotate(-90deg);
+    }
+
+    .menu-icon.active .close-svg {
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+
+    .mobile-menu {
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .cart-panel {
+      transition: right 0.4s ease;
+    }
+
+
+    /*------------HERO IMAGE----------*/
+
+    .hero-bg {
+      background: #fffbef;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(214, 122, 0, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(33, 38, 58, 0.03) 0%, transparent 50%),
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(214, 122, 0, 0.02) 35px, rgba(214, 122, 0, 0.02) 70px);
+    }
+
+    .font-serif {
+      font-family: "DM Serif Display", serif;
+    }
+
+    .font-sans {
+      font-family: "Manrope", sans-serif;
+    }
+
+    .btn-sweep {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero_content {
+      margin-top: 80px;
+    }
+
+    .btn-sweep::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      transition: height 0.4s ease;
+      z-index: -1;
+    }
+
+    .btn-primary::before {
+      background-color: #d67a00;
+    }
+
+    .btn-secondary::before {
+      background-color: #d67a00;
+    }
+
+    .btn-sweep:hover::before {
+      height: 100%;
+    }
+
+    .btn-sweep:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 4px 12px rgba(214, 122, 0, 0.3);
+    }
+
+    .btn-secondary:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .hero_content {
+        margin-top: 5rem;
+      }
+    }
+
+
+    /*----------AWARD SECTION--------*/
+
+    @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-scroll {
+            animation: scroll-left 15s linear infinite;
+        }
+
+        .scroll-container:hover .animate-scroll {
+            animation-play-state: paused;
+        }
+
+
+   /* Custom styles for animations and effects that Tailwind can't handle alone */
+    .cta {
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+    }
+    
+    .cta::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      z-index: 0;
+      transition: height 0.3s ease;
+    }
+    
+    .cta:hover::before {
+      height: 100%;
+    }
+    
+    .cta span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cta-buy::before {
+      background: #fff;
+    }
+    
+    .cta-buy:hover {
+      color: #d67a00;
+    }
+    
+    .cta-cart::before {
+      background: #21263a;
+    }
+    
+    .cta-cart:hover {
+      color: #fff;
+    }
+
+
+    /*--------------STYLE FOR DESCRIPTION--------*/
+
+    /* Tab active state */
+  .tab-btn.active { color: #d67a00; }
+  
+  /* Tab indicator positioning - needs JS */
+  .tab-indicator { will-change: transform; }
+  
+  /* Hidden state */
+  .tab-panel .hidden { display: none; }
+  
+  /* Fade in animation */
+  @keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(8px); } 
+    to { opacity: 1; transform: none; } 
+  }
+  .animate-fadeIn { animation: fadeIn 0.3s ease; }
+  
+  /* Form collapsed state */
+  .leave-form-container.collapsed { 
+    max-height: 0; 
+    opacity: 0; 
+    border: none;
+    margin-top: 0;
+  }
+  .leave-form-container:not(.collapsed) { 
+    max-height: 800px; 
+    opacity: 1; 
+  }
+  
+  /* Star hover tooltip */
+  .star-btn:hover .star-tooltip { opacity: 1; }
+  
+  /* Star filled state */
+  .star-btn:hover .star-icon { fill: #1a1a1a; stroke: #1a1a1a; }
+  .star-btn.filled .star-icon { fill: #1a1a1a; stroke: #1a1a1a; }
+  
+  /* Send button sweep effect */
+  .btn-send::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #d67a00;
+    transition: top 0.3s ease;
+  }
+  .btn-send:hover::before { top: 0; }
+
+

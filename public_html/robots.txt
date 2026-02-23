@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /checkout
+Disallow: /api/checkout
+Disallow: /api/orders/track
+Disallow: /order
+Disallow: /admin
+Disallow: /api/cart
+Disallow: *?ref=
+Disallow: *?utm_
+
+Sitemap: /sitemap.xml
