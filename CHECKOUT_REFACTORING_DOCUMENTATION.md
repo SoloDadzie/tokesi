@@ -566,10 +566,12 @@ $validator = Validator::make($request->all(), [
 
 **Environment Variables** (`.env`):
 ```env
-STRIPE_KEY=pk_live_51SVoSiJFgwpMYTZfeAYS0VLmX9PRbFBCRJ8zZo8nbPsnzfKEFv0A8VIxYqWWbngkI4NSkBVd3Ld75hR74L7JByfh00ET1tJpDI
-STRIPE_SECRET=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
-STRIPE_WEBHOOK_SECRET=whsec_b373d8565692e006595726022d68c30ce8e9c1e6398fa21391a1225078acea8
+STRIPE_KEY=pk_live_xxxxxxxxxxxxxxxxxxxx
+STRIPE_SECRET=sk_live_xxxxxxxxxxxxxxxxxxxx
+STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxxxxxx
 ```
+
+**Note:** Replace with actual keys from your Stripe Dashboard
 
 ### Commits
 - `fix(checkout): improve Pay Now button and add Stripe API validation`
