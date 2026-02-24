@@ -19,7 +19,7 @@
           @if($product->long_description)
             {!! $product->long_description !!}
           @else
-            {{ $product->short_description ?? 'No description available.' }}
+            {!! $product->short_description ?? 'No description available.' !!}
           @endif
         </p>
       </div>

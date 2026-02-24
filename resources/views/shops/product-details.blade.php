@@ -40,9 +40,9 @@
             <p class="product-detail-price">{{ $product->getPriceFormatted() }}</p>
 
             <div class="product-detail-description">
-                <p>{{ $product->short_description ?: 'An uplifting children\'s storybook that celebrates confidence, family love and values.' }}</p>
+                <p>{!! $product->short_description ?: 'An uplifting children\'s storybook that celebrates confidence, family love and values.' !!}</p>
                 @if($product->long_description)
-                    <p>{{ \Illuminate\Support\Str::limit(strip_tags($product->long_description), 280) }}</p>
+                    <p>{!! \Illuminate\Support\Str::limit(strip_tags($product->long_description), 280) !!}</p>
                 @endif
             </div>
 
@@ -90,7 +90,7 @@
         <div class="tabs-content">
             <div class="tab-panel active" id="description">
                 <h3>About This Book</h3>
-                <p>{{ $product->long_description ?: $product->short_description ?: 'A meaningful and inspiring story crafted for children and families.' }}</p>
+                <p>{!! $product->long_description ?: $product->short_description ?: 'A meaningful and inspiring story crafted for children and families.' !!}</p>
             </div>
 
             <div class="tab-panel" id="specifications">
