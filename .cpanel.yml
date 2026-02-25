@@ -1,0 +1,22 @@
+---
+deployment:
+  targets:
+    public_html:
+      username: tokeywvs
+      domain: tokesiinspired.com
+      path: /public_html
+      exclude:
+        - node_modules
+        - .git
+        - .env.local
+        - storage/logs
+        - storage/framework/cache
+        - storage/framework/views
+        - bootstrap/cache
+      post_deploy:
+        - composer install --no-dev --optimize-autoloader
+        - php artisan migrate --force
+        - php artisan config:cache
+        - php artisan route:cache
+        - php artisan view:cache
+        - chmod -R 755 storage bootstrap/cache
