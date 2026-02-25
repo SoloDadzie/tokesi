@@ -3,7 +3,7 @@ deployment:
   targets:
     public_html:
       username: tokeywvs
-      domain: tokesiinspired.com
+      domain: tokesiakinola.com
       path: /public_html
       exclude:
         - node_modules
