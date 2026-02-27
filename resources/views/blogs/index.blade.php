@@ -50,24 +50,25 @@
 <section class="events-section">
     <div class="events-container">
         <h2 class="section-title">Upcoming Events</h2>
-        <div class="events-grid">
-            <div class="event-card">
-                <div class="event-date-badge"><span class="event-day">15</span><span class="event-month">Feb</span></div>
-                <div class="event-content">
-                    <h3 class="event-title">Book Reading & Signing</h3>
-                    <p class="event-description">Join Tokesi for an afternoon of storytelling and book signing.</p>
-                    <a href="{{ route('contact') }}" class="btn btn-outline">Learn More</a>
-                </div>
+        @if($upcomingEvents->count() > 0)
+            <div class="events-grid">
+                @foreach($upcomingEvents as $event)
+                    <div class="event-card">
+                        <div class="event-date-badge">
+                            <span class="event-day">{{ $event->published_at->format('d') }}</span>
+                            <span class="event-month">{{ $event->published_at->format('M') }}</span>
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-title">{{ $event->title }}</h3>
+                            <p class="event-description">{!! Str::limit(strip_tags($event->short_description ?? $event->content), 150) !!}</p>
+                            <a href="{{ route('blog.show', $event->slug) }}" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div class="event-card">
-                <div class="event-date-badge"><span class="event-day">22</span><span class="event-month">Mar</span></div>
-                <div class="event-content">
-                    <h3 class="event-title">School Visit Programme</h3>
-                    <p class="event-description">Tokesi visits local schools to inspire the next generation of readers.</p>
-                    <a href="{{ route('contact') }}" class="btn btn-outline">Book a Visit</a>
-                </div>
-            </div>
-        </div>
+        @else
+            <p class="blog-excerpt" style="text-align: center;">No upcoming events at this time.</p>
+        @endif
     </div>
 </section>
 @endsection

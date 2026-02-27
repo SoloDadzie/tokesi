@@ -18,7 +18,14 @@ class BlogController extends Controller
             ->with(['categories', 'tags'])
             ->paginate(12);
 
-        return view('blogs.index', compact('articles'));
+        // Get upcoming events only (events with published_at in the future)
+        $upcomingEvents = BlogArticle::where('type', 'event')
+            ->where('status', 'published')
+            ->where('published_at', '>', now())
+            ->orderBy('published_at', 'asc')
+            ->get();
+
+        return view('blogs.index', compact('articles', 'upcomingEvents'));
     }
 
     public function show($slug)
