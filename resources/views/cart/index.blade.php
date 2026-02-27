@@ -42,6 +42,19 @@
     </div>
 </section>
 
+<!-- Confirmation Modal -->
+<div id="confirmModal" class="confirm-modal" style="display: none;">
+    <div class="confirm-modal-overlay"></div>
+    <div class="confirm-modal-content">
+        <h3>Remove Item</h3>
+        <p>Are you sure you want to remove this item from your cart?</p>
+        <div class="confirm-modal-actions">
+            <button class="btn btn-outline" onclick="cancelRemove()">Cancel</button>
+            <button class="btn btn-primary" onclick="confirmRemove()">Remove</button>
+        </div>
+    </div>
+</div>
+
 <style>
 .cart-page {
     padding: 3rem 0;
@@ -237,6 +250,62 @@
     margin-bottom: 2rem;
 }
 
+/* Confirmation Modal */
+.confirm-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.confirm-modal-content {
+    position: relative;
+    background: var(--color-white);
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-modal-content h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1rem;
+}
+
+.confirm-modal-content p {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.confirm-modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.confirm-modal-actions .btn {
+    flex: 1;
+    text-align: center;
+}
+
 @media (max-width: 768px) {
     .cart-page-container {
         grid-template-columns: 1fr;
@@ -347,8 +416,24 @@ async function updateCartQuantity(itemId, change) {
     }
 }
 
-async function removeCartItem(itemId) {
-    if (!confirm('Remove this item from cart?')) return;
+let pendingRemoveItemId = null;
+
+function removeCartItem(itemId) {
+    pendingRemoveItemId = itemId;
+    document.getElementById('confirmModal').style.display = 'flex';
+}
+
+function cancelRemove() {
+    pendingRemoveItemId = null;
+    document.getElementById('confirmModal').style.display = 'none';
+}
+
+async function confirmRemove() {
+    if (!pendingRemoveItemId) return;
+    
+    const itemId = pendingRemoveItemId;
+    pendingRemoveItemId = null;
+    document.getElementById('confirmModal').style.display = 'none';
     
     try {
         const response = await fetch(`/api/cart/${itemId}`, {
@@ -366,6 +451,22 @@ async function removeCartItem(itemId) {
     } catch (error) {
         console.error('Failed to remove item:', error);
     }
+}
+
+// Update cart badge in header
+function updateCartBadge() {
+    const cartBadge = document.getElementById('cartBadge');
+    if (!cartBadge) return;
+    
+    fetch('/api/cart')
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                cartBadge.textContent = data.count;
+                cartBadge.style.display = data.count > 0 ? 'block' : 'none';
+            }
+        })
+        .catch(error => console.error('Failed to update cart badge:', error));
 }
 
 document.addEventListener('DOMContentLoaded', loadCartPage);
