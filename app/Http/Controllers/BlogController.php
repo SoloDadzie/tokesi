@@ -14,6 +14,7 @@ class BlogController extends Controller
     public function index()
     {
         $articles = BlogArticle::published()
+            ->where('type', 'blog')
             ->ordered()
             ->with(['categories', 'tags'])
             ->paginate(12);
