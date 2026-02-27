@@ -14,6 +14,11 @@ class CartController extends Controller
         $this->cartService = $cartService;
     }
 
+    public function index()
+    {
+        return view('cart.index');
+    }
+
     public function add(Request $request)
     {
         $request->validate([

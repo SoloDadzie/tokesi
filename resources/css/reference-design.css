@@ -2495,8 +2495,9 @@ h1, h2, h3, h4 {
 }
 
 .btn-sm {
-    padding: 0.5rem 1rem;
-    font-size: 0.7rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
 }
 
 /* Amazon Banner */

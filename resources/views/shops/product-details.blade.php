@@ -56,10 +56,10 @@
                     <input type="number" value="1" min="1" max="10" class="qty-input" id="qtyInput">
                     <button class="qty-btn" id="qtyPlus" type="button">+</button>
                 </div>
-                <button type="button" class="btn btn-primary add-to-cart-btn" onclick="addToCartFromDetails()">Add to Cart</button>
+                <button type="button" class="btn btn-primary" onclick="addToCartFromDetails()">Add to Cart</button>
             </div>
 
-            <a href="https://www.amazon.co.uk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary buy-amazon-btn">
+            <a href="https://www.amazon.co.uk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="margin-top: 0.75rem;">
                 Buy on Amazon
             </a>
 

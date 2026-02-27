@@ -84,24 +84,24 @@
     <div class="published-works-container">
         <h2 class="section-title">Published Works</h2>
         <div class="works-grid">
-            <div class="work-item">
+            <a href="{{ route('product.show', 'sarahs-perfect-gift') }}" class="work-item">
                 <div class="work-image">
                     <img src="{{ asset('imgs/book-sarahs-perfect-gift.jpg') }}" alt="Sarah's Perfect Gift">
                 </div>
                 <h3>Sarah's Perfect Gift</h3>
-            </div>
-            <div class="work-item">
+            </a>
+            <a href="{{ route('product.show', 'show-me-your-friends') }}" class="work-item">
                 <div class="work-image">
                     <img src="{{ asset('imgs/book-show-me-your-friends.jpg') }}" alt="Show Me Your Friends">
                 </div>
                 <h3>Show Me Your Friends</h3>
-            </div>
-            <div class="work-item">
+            </a>
+            <a href="{{ route('product.show', 'what-if-your-cup') }}" class="work-item">
                 <div class="work-image">
                     <img src="{{ asset('imgs/book-what-if.jpg') }}" alt="What If Your Cup?">
                 </div>
                 <h3>What If Your Cup?</h3>
-            </div>
+            </a>
         </div>
     </div>
 </section>

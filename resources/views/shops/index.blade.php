@@ -63,7 +63,7 @@
 
             <div class="products-grid">
                 @forelse($products as $product)
-                    <div class="product-card">
+                    <a href="{{ route('product.show', $product->slug) }}" class="product-card">
                         <div class="product-image">
                             @if($product->primaryImage)
                                 <img src="{{ asset('storage/' . $product->primaryImage->image_path) }}" alt="{{ $product->title }}">
@@ -75,19 +75,16 @@
                             @elseif($product->is_new_arrival)
                                 <span class="product-badge">New</span>
                             @endif
-                            <div class="product-overlay">
-                                <a href="{{ route('product.show', $product->slug) }}" class="btn btn-primary">View Details</a>
-                            </div>
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title"><a href="{{ route('product.show', $product->slug) }}">{{ $product->title }}</a></h3>
+                            <h3 class="product-title">{{ $product->title }}</h3>
                             <p class="product-description">{{ $product->short_description ? \Illuminate\Support\Str::limit(strip_tags($product->short_description), 110) : 'Discover this inspiring story crafted for young readers.' }}</p>
                             <div class="product-footer">
                                 <span class="product-price">{{ $product->getPriceFormatted() }}</span>
-                                <button class="btn btn-outline btn-sm add-to-cart" onclick="addToCart('{{ $product->id }}', 1, null, this)">Add to Cart</button>
+                                <button class="btn btn-sm" onclick="event.preventDefault(); event.stopPropagation(); addToCart('{{ $product->id }}', 1, null, this)">Add to Cart</button>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 @empty
                     <div class="product-card">
                         <div class="product-info">

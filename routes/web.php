@@ -24,6 +24,9 @@ Route::get('/api/products/search', [ProductController::class, 'search'])->name('
 Route::post('/api/products/{id}/validate-coupon', [ProductController::class, 'validateCoupon'])->name('products.validate-coupon');
 Route::post('/api/products/{id}/increment-coupon-usage', [ProductController::class, 'incrementCouponUsage'])->name('products.increment-coupon');
 
+// Cart page route
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
 // Cart API routes
 Route::prefix('api/cart')->group(function () {
     Route::get('/', [CartController::class, 'get'])->name('cart.get');
