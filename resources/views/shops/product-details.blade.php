@@ -168,7 +168,8 @@
 
     function addToCartFromDetails() {
         const quantity = Number(qtyInput?.value || 1);
-        addToCart(productId, quantity);
+        const button = document.querySelector('.btn.btn-primary');
+        addToCart(productId, quantity, null, button);
     }
 
     const tabBtns = document.querySelectorAll('.tab-btn');
