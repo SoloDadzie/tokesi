@@ -2500,6 +2500,14 @@ h1, h2, h3, h4 {
     font-weight: 500;
 }
 
+.btn-primary-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
 /* Amazon Banner */
 .amazon-banner {
     padding: var(--spacing-2xl) var(--spacing-lg);

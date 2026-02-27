@@ -81,7 +81,7 @@
                             <p class="product-description">{{ $product->short_description ? \Illuminate\Support\Str::limit(strip_tags($product->short_description), 110) : 'Discover this inspiring story crafted for young readers.' }}</p>
                             <div class="product-footer">
                                 <span class="product-price">{{ $product->getPriceFormatted() }}</span>
-                                <button class="btn btn-primary" data-original-content="Add to Cart" onclick="event.preventDefault(); event.stopPropagation(); addToCart('{{ $product->id }}', 1, null, this)">Add to Cart</button>
+                                <button class="btn btn-primary btn-primary-sm" data-original-content="Add to Cart" onclick="event.preventDefault(); event.stopPropagation(); addToCart('{{ $product->id }}', 1, null, this)">Add to Cart</button>
                             </div>
                         </div>
                     </a>
