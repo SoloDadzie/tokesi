@@ -44,7 +44,7 @@
                         </a>
                     </div>
                     <h3 class="book-title">{{ $product->title }}</h3>
-                    <button type="button" class="btn btn-outline" onclick="addToCart({{ $product->id }}, 1, null, this)">DISCOVER THE STORY</button>
+                    <a href="{{ route('product.show', $product->slug) }}" class="btn btn-outline">DISCOVER THE STORY</a>
                 </div>
             @empty
                 <div class="book-card">

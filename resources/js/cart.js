@@ -92,14 +92,17 @@ window.addToCart = async function(productId, quantity = 1, couponCode = null, bu
       showNotification(message, 'success');
       
       if (buttonElement) {
+        const originalWidth = buttonElement.offsetWidth;
+        buttonElement.style.minWidth = originalWidth + 'px';
         buttonElement.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 inline-block mr-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 4px;">
             <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
           </svg>
-          Added!
+          <span style="vertical-align: middle;">Added</span>
         `;
         setTimeout(() => {
           buttonElement.innerHTML = buttonElement.getAttribute('data-original-content');
+          buttonElement.style.minWidth = '';
           buttonElement.disabled = false;
         }, 1500);
       }
